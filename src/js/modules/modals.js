@@ -75,7 +75,7 @@ const modals = () => {
   
   bindModal('.button-design', '.popup-design', '.popup-design .popup-close');
   bindModal('.button-consultation', '.popup-consultation', '.popup-consultation .popup-close');
-  showModalByTime('.popup-consultation', 5000);
+  // showModalByTime('.popup-consultation', 60000);
 };
 
 export default modals;
