@@ -1,7 +1,7 @@
 const forms = () => {
   const form = document.querySelectorAll('form');
   const inputs = document.querySelectorAll('input');
-  //const upload = document.querySelectorAll('[name="upload"]');
+  const upload = document.querySelectorAll('[name="upload"]');
 
   const message = {
     loading: 'Загрузка...',
@@ -13,7 +13,7 @@ const forms = () => {
 };
 
   const path = {
-    designer: 'assets/server.php',
+    designer: 'assets/designer.php',
     question: 'assets/question.php'
   };
 
@@ -30,7 +30,23 @@ const forms = () => {
     inputs.forEach(input => {
       input.value = '';
     });
+
+    upload.forEach(item => {
+      item.previousElementSibling.textContent = 'файл не выбран';
+    })
   };
+
+  upload.forEach(item => {
+    item.addEventListener('input', () => {
+      console.log(item.files[0]);
+      let dots;
+      const file = item.files[0].name.split('.');
+
+      file[0].length > 6 ? dots = '...' : dots = '.';
+      const name = `${file[0].substring(0, 6)}${dots}${file[1]}`;
+      item.previousElementSibling.textContent = name;
+    })
+  });
 
   form.forEach(item => {
     item.addEventListener('submit', (event) => {
@@ -56,7 +72,7 @@ const forms = () => {
 
       const formData = new FormData(item);
       let api;
-      item.closest('.popup-design') ? api = path.designer : api = path.question;
+      item.closest('.popup-design') || item.classList.contains('calc_form') ? api = path.designer : api = path.question;
       console.log(`api : `, api);
 
       postData(api, formData)
@@ -73,6 +89,9 @@ const forms = () => {
           clearInputs();
           setTimeout(() => {
             statusMessage.remove();
+            item.style.display = 'block';
+            item.classList.remove('fadeOutUp');
+            item.classList.add('fadeInUp');
           },5000);
           
         });
