@@ -5,6 +5,7 @@ import mask from './modules/mask';
 import checkTextInpts from './modules/checkTextInpts';
 import showMoreStyles from './modules/showMoreStyles';
 import calc from './modules/calc';
+import filterElemetns from './modules/filterElemetns';
 
 window.addEventListener('DOMContentLoaded', () => {
   'use strict';
@@ -18,4 +19,5 @@ window.addEventListener('DOMContentLoaded', () => {
   checkTextInpts('[name="message"]');
   showMoreStyles('.button-styles', '#styles .row');
   calc('#size', '#material', '#options', '.promocode', '.calc-price');
+  filterElemetns();
 });
