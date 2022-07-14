@@ -7,7 +7,8 @@ import showMoreStyles from './modules/showMoreStyles';
 import calc from './modules/calc';
 import filterElemetns from './modules/filterElemetns';
 import pictureSize from './modules/pictureSize';
-import accordion from './modules/accordon'
+import accordion from './modules/accordon';
+import burger from './modules/burger';
 
 window.addEventListener('DOMContentLoaded', () => {
   'use strict';
@@ -24,4 +25,5 @@ window.addEventListener('DOMContentLoaded', () => {
   filterElemetns();
   pictureSize('.sizes-block');
   accordion('.accordion-heading')
+  burger('.burger-menu', '.burger');
 });
